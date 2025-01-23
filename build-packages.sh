@@ -2,11 +2,11 @@
 
 # Project config
 PROJECT_NAME="changeIP"
-VERSION="v0.0.1"
+VERSION="v1.0.0"
 OUTPUT_DIR="builds"
 
 # Compile configuration
-GO_BUILD_FLAGS=''
+GO_BUILD_FLAGS=-ldflags="-s -w"
 COMPRESS_BINARIES=true
 GENERATE_CHECKSUMS=true
 
@@ -50,9 +50,9 @@ for PLATFORM in "${PLATFORMS[@]}"; do
 
     # Configuring env variables for multiple compilation
     if [ "$ARCH" = "arm" ]; then
-        env GOOS="$OS" GOARCH="$ARCH" GOARM="$ARM" go build $GO_BUILD_FLAGS -o "$OUTPUT"
+        env GOOS="$OS" GOARCH="$ARCH" GOARM="$ARM" go build "$GO_BUILD_FLAGS" -o "$OUTPUT"
     else
-        env GOOS="$OS" GOARCH="$ARCH" go build $GO_BUILD_FLAGS -o "$OUTPUT"
+        env GOOS="$OS" GOARCH="$ARCH" go build "$GO_BUILD_FLAGS" -o "$OUTPUT"
     fi
 
     # Check compilation state
@@ -68,8 +68,7 @@ for PLATFORM in "${PLATFORMS[@]}"; do
         # Generating checksums
         if [ "$GENERATE_CHECKSUMS" = true ]; then
             (
-                cd "$OUTPUT_DIR"
-                sha256sum "$(basename "$OUTPUT")" > "${OUTPUT}.sha256"
+                sha256sum "$OUTPUT" > "${OUTPUT}.sha256"
                 echo "Checksums generated"
             )
         fi
