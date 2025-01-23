@@ -14,7 +14,7 @@ GENERATE_CHECKSUMS=true
 PLATFORMS=(
     "linux/amd64"     # Linux x86_64
     "linux/arm64"     # Linux ARM64
-    "linux/riscv64"   # Linux RISC-V
+#    "linux/riscv64"   # Linux RISC-V
 #    "linux/arm/7"     # Linux ARMv7
 #    "windows/amd64"   # Windows x86_64
 #    "darwin/amd64"    # macOS x86_64
