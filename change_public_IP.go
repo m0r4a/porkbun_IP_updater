@@ -60,11 +60,11 @@ func main() {
 
 	// Validate the configuration
 	if err := validateConfig(config); err != nil {
-		log.Fatalf("Error in the configuration: %v", err)
+		log.Fatalf("error in the configuration: %v", err)
 	}
 
 	if err := updateDNSIfNeeded(config); err != nil {
-		log.Fatalf("Error updating the DNS: %v", err)
+		log.Fatalf("error updating the DNS: %v", err)
 	}
 }
 
@@ -88,7 +88,7 @@ func updateDNSIfNeeded(config PorkbunConfig) error {
 	}
 
 	if err := SendSMS("Your IP has changed"); err != nil {
-		log.Printf("Error sending the SMS: %v", err)
+		log.Printf("error sending the SMS: %v", err)
 	}
 
 	return nil
