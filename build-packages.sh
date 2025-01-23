@@ -2,7 +2,7 @@
 
 # Project config
 PROJECT_NAME="changeIP"
-VERSION="v1.0.0"
+VERSION="v0.0.1"
 OUTPUT_DIR="builds"
 
 # Compile configuration
