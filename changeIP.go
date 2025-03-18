@@ -87,7 +87,7 @@ func updateDNSIfNeeded(config PorkbunConfig) error {
 		return fmt.Errorf("error updating DNS register: %w", err)
 	}
 
-	if err := SendSMS("Your IP has changed"); err != nil {
+	if err := SendSMS("Your IP has changed to " + publicIP); err != nil {
 		log.Printf("error sending the SMS: %v", err)
 	}
 
